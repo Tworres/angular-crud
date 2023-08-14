@@ -1,0 +1,7 @@
+<p>Formulário</p>
+<form (ngSubmit)="car.id ? update() : create()" #form="ngForm">
+  <input type="hidden" name="id" [(ngModel)]="car.id" />
+  <input type="text" name="name" [(ngModel)]="car.name" />
+  <button type="submit">Salvar</button>
+  <button type="button" (click)="goBack()">Voltar</button>
+</form>

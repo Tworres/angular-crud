@@ -1,0 +1,5 @@
+<p>Listagem <a routerLink="/car-form/">Adicionar</a></p>
+
+<div *ngFor="let car of cars | async">
+  <a routerLink="/car-form/{{ car.id }}">{{ car.name }}</a>
+</div>
