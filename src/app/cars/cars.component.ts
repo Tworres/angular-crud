@@ -9,14 +9,23 @@ import { Car } from '../interfaces';
   styleUrls: ['./cars.component.scss'],
 })
 export class CarsComponent implements OnInit {
-  cars!: Observable<Car[]>;
+  cars!: Car[];
   constructor(private carsService: CarsService) {}
 
-  getCars(): Observable<Car[]> {
-    return this.carsService.getCars();
+  getCars(): void {
+    debugger;
+    this.carsService.getCars().subscribe((cars) => {
+      debugger;
+      this.cars = cars;
+    });
   }
 
   ngOnInit(): void {
-    this.cars = this.getCars();
+    this.getCars();
+  }
+
+  delete(car: Car): void {
+    this.cars = this.cars.filter((c) => c !== car);
+    this.carsService.delete(car).subscribe();
   }
 }

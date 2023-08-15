@@ -44,9 +44,13 @@ export class CarFormComponent implements OnInit {
   }
 
   create(): void {
-    console.log(this.car);
     this.carsService.create(this.car).subscribe((c) => {
-      console.log(c);
+      this.goBack();
+    });
+  }
+
+  delete(): void {
+    this.carsService.delete(this.car).subscribe((c) => {
       this.goBack();
     });
   }

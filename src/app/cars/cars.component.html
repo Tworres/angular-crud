@@ -1,5 +1,9 @@
 <p>Listagem <a routerLink="/car-form/">Adicionar</a></p>
 
-<div *ngFor="let car of cars | async">
-  <a routerLink="/car-form/{{ car.id }}">{{ car.name }}</a>
-</div>
+<ul>
+  <li *ngFor="let car of cars">
+    <span>{{ car.id }}</span>
+    <a routerLink="/car-form/{{ car.id }}">{{ car.name }}</a>
+    <button type="button" (click)="delete(car)">X</button>
+  </li>
+</ul>

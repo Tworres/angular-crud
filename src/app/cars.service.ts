@@ -14,10 +14,7 @@ export class CarsService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
+      console.error(error);
       return of(result as T);
     };
   }
@@ -30,7 +27,8 @@ export class CarsService {
   }
 
   getCar(id: number): Observable<Car> {
-    const car = this.http.get<Car>(this.httpUrl + '/' + id);
+    const url = this.httpUrl + '/' + id;
+    const car = this.http.get<Car>(url);
     return car;
   }
 
@@ -43,6 +41,14 @@ export class CarsService {
   update(car: Car): Observable<any> {
     return this.http
       .put(this.httpUrl, car, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('updateCar')));
+  }
+
+  delete(car: Car): Observable<any> {
+    debugger;
+    const url = this.httpUrl + '/' + car.id;
+    return this.http
+      .delete(url, this.httpOptions)
       .pipe(catchError(this.handleError<any>('updateCar')));
   }
 }
