@@ -3,20 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarsComponent } from './cars/cars.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-import { CarFormComponent } from './car-form/car-form.component';
 import { FormsModule } from '@angular/forms';
+import { CarsModule } from './modules/cars/cars.module';
 
 @NgModule({
-  declarations: [AppComponent, CarsComponent, CarFormComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    CarsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),

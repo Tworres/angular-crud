@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CarsService } from '../cars.service';
-import { Car } from '../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { CarModel } from '../../models/Cars';
+import { CarsService } from '../../services/cars.service';
 
 @Component({
   selector: 'app-cars-details',
@@ -54,8 +54,4 @@ export class CarFormComponent implements OnInit {
       this.goBack();
     });
   }
-}
-
-class CarModel implements Car {
-  constructor(public id: number | null = null, public name: string = '') {}
 }
